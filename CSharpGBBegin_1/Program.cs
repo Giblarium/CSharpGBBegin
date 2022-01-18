@@ -10,6 +10,10 @@ namespace CSharpGBBegin_1
     {
         static void Main(string[] args)
         {
+
+
+
+
         }
     }
 }
