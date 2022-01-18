@@ -10,10 +10,12 @@ namespace CSharpGBBegin_1
     {
         static void Main(string[] args)
         {
+            string username = Environment.UserName;
+            string date = DateTime.Now.ToString("dd MMMM");
 
-
-
-
+            Console.WriteLine("Привет, {0}! Сегодня {1}", username, date);
+            
+            Console.ReadLine();
         }
     }
 }
