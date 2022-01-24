@@ -134,16 +134,18 @@ namespace CSharpGBBegin_2
             string shop = "Пятерочка";
             string addres = "г. Воронеж";
 
+            Random random = new Random();
+
             Goods[] goods = new Goods[5]
             {
-                new Goods("Яблоки", 99.99),
-                new Goods("Сливки", 60.69),
-                new Goods("Молоко", 56.99),
-                new Goods("Морковь", 1399.70),
-                new Goods("Пакет", 59.99)
+                new Goods("Яблоки", random.NextDouble() * 100),
+                new Goods("Сливки", random.NextDouble() * 100),
+                new Goods("Молоко", random.NextDouble() * 100),
+                new Goods("Морковь", random.NextDouble() * 100),
+                new Goods("Пакет", random.NextDouble() * 100)
             };
 
-            string dateTime = DateTime.Now.ToString("dd.MM.yy");
+            DateTime dateTime = DateTime.Now;
 
             int numberReceipt = new Random().Next(10, 99);
 
@@ -157,14 +159,14 @@ namespace CSharpGBBegin_2
             WriteCenter(shop);
             WriteCenter(addres);
             WriteLine();
-            Console.WriteLine("|{0, -9} чек № {1, 2}|", dateTime, numberReceipt);
+            Console.WriteLine("|{0, -9} чек №{1, 2}|", dateTime.ToString("dd.MM.yyyy"), numberReceipt);
             WriteLine();
             foreach (var good in goods)
             {
                 WriteGoods(good);
             }
             WriteLine();
-            Console.WriteLine("|Итого {0, 12}|", sum);
+            Console.WriteLine("|Итого {0, 12}|", sum.ToString("#######.##"));
             WriteLine();
             EndQuest();
         }
