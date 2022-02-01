@@ -4,24 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace CSharpGBBegin_3
 {
+    
     internal class Program
     {
+        const int sizeArray = 10;
+
         static void Main(string[] args)
         {
-            //Quest1(); //заполнение массива случайными числами и вывод элементов на диагонали
-            //Quest2(); //телефонный справочник
+            Quest1(); //заполнение массива случайными числами и вывод элементов на диагонали
+            Quest2(); //телефонный справочник
             Quest3(); //строка наоборот
-            //Quest4(); //морской бой
+            Quest4(); //морской бой
         }
 
         private static void Quest1()
         {
             Console.WriteLine("Исходный массив: ");
             Random random = new Random();
-            int[,] array = new int[5, 5];
-            for (int i = 0; i <= array.GetUpperBound(0); i++)
+            int[,] array = new int[sizeArray, sizeArray];
+            for (int i = 0; i <= array.GetUpperBound(0); i++) // заполнение массива случайными числами и вывод на экран
             {
                 for (int j = 0; j <= array.GetUpperBound(1); j++)
                 {
@@ -36,13 +40,32 @@ namespace CSharpGBBegin_3
             {
                 for (int j = 0; j <= array.GetUpperBound(1); j++)
                 {
-                    if (i == j)
+                    if (i == j) //если индексы равны, то это элемент на диагонали
                     {
                         Console.Write("{0, 2}", array[i, j]);
                     }
                 }
             }
+            Console.WriteLine();
 
+
+            int indexDiagColumnElement = array.GetUpperBound(1);    //индекс колонки элемента на диагонали
+            int indexDiagRowElement = 0;                            //индекс строки элемента на диагонали
+            Console.WriteLine("Элементы по другой диагонали");
+            for (int i = 0; i <= array.GetUpperBound(0); i++)
+            {
+                for (int j = 0; j <= indexDiagColumnElement; j++)
+                {
+                    if (i == indexDiagRowElement && j == indexDiagColumnElement) //если индекс колонки и строки совпадает с итератором
+                    {
+                        Console.Write("{0, 2}", array[i, j]); //вывод элемента
+                        indexDiagColumnElement--;   //уменьшение индекса колонки
+                        indexDiagRowElement++;      //увеличение индекса строки
+                        break; //прервать просмотр строки
+                    }
+                }
+            }
+            Console.WriteLine();
 
             EndQuest();
         }
