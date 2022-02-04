@@ -1,10 +1,10 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 
-Quest1(); //Объединение строк
-Quest2(); //на входе строка, вывести сумму
-Quest3(); //время года
-Quest4(); //число фибоначи
+//Quest1(); //Объединение строк
+//Quest2(); //на входе строка, вывести сумму
+//Quest3(); //время года
+//Quest4(); //число фибоначи
 
 #region Quest1
 void Quest1()
@@ -14,7 +14,7 @@ void Quest1()
             {"Ильчук", "Дмитрий", "Сергеевич"},
             {"Смирнов", "Максим", "Львович"},
             {"Макаров", "Денис", "Иванович"},
-            {"Петров","Александр","Тимофеевич"}
+            {"Петров", "Александр", "Тимофеевич"}
         };
 
 
@@ -64,11 +64,12 @@ void Quest2()
     str = str.Trim();
     Console.WriteLine("Строка для суммирования: " + str);
 
-
+    
     //разбивка строки на подстроки и если подстрока число, то заполняется list
     int startIndex = 0;
     int number;
     List<int> numbers = new List<int>();
+
     while (true)
     {
         int subStrLenght = str.IndexOf(' ', startIndex) - startIndex;
@@ -96,6 +97,8 @@ void Quest2()
             break;
         }
     }
+    
+
 
     //суммирование элементов в list
     int sum = 0;
@@ -155,7 +158,6 @@ Seasons GetSeason(string strNumberMonth, out int numberMonth)
 {
     Int32.TryParse(strNumberMonth, out numberMonth);
 
-
     switch (numberMonth)
     {
         case 12:
@@ -189,7 +191,7 @@ void Quest4()
         Console.WriteLine("Не число");
         return;
     }
-    decimal fibonachchi = GetFibonachchi(count, 1m, 1m); // первоначальный вызов функции. Передается номер числа в последовательности и первое и второе число последовательности равное 1
+    decimal fibonachchi = GetFibonachchi(count); // первоначальный вызов функции. Передается необходимый номер числа в последовательности 
 
     Console.WriteLine("Число №{0} в последовательности Фибоначчи: {1}", count, fibonachchi);
 
@@ -197,7 +199,7 @@ void Quest4()
 }
 
 
-static decimal GetFibonachchi(decimal count, decimal first, decimal two, int current = 3) //необязательный параметр current отображает текущий шаг и позволяет выйти из рекурсии
+static decimal GetFibonachchi(decimal count, decimal first = 1m, decimal two = 1m, int current = 3) //необязательный параметр current отображает текущий шаг и позволяет выйти из рекурсии. first и two при первоначальном вызове функции 
 {
     if (count == 1 || count == 2) //если нужно вывести первое или второе число из последовательности
     {
